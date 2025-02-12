@@ -19,6 +19,7 @@ export default function Home() {
         <p>🔧 사용한 기술 스택</p>
         <p>React : 19.0.0, vite : 6.1.0, typescript : 5.7.2, tailwindcss : 4.0.5, shadcn/ui : 2.3.0</p>
         <br></br>
+        <p>🔗 GitHub: <a href="https://github.com/keyy1315/myTodo-project/tree/main/src">https://github.com/keyy1315/myTodo-project/tree/main/src</a></p>
         </CardContent>
     </Card>
     <TodayTodo />
