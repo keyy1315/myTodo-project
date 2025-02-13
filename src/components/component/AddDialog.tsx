@@ -16,7 +16,8 @@ import { Calendar } from "@/components/ui/calendar";
 import { useState } from "react";
 import { useEffect } from "react";
 import { SaveIcon, CalendarIcon } from "lucide-react";
-import { useTodo, Todo } from "../context/TodoContext";
+import { useTodo} from "../../hooks/useTodo";
+import { Todo } from "../../types/todo";
 
 const AddDialog = ({ isNew = true, id }: { isNew?: boolean; id?: number }) => {
   const [date, setDate] = useState<Date>(new Date());
@@ -36,7 +37,7 @@ const AddDialog = ({ isNew = true, id }: { isNew?: boolean; id?: number }) => {
           : new Date()
       );
     }
-  }, [id]);
+  }, [id, todos]);
 
   const handleAddTodo = (id: number | undefined) => {
     if (todo.trim() === "") {

@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Trash2, CheckIcon } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useTodo } from "../context/TodoContext";
+import { useTodo } from "../../hooks/useTodo";
 
 interface CardProps {
   id: number;
@@ -10,7 +10,24 @@ interface CardProps {
 
 const CardComponent: React.FC<CardProps> = ({ id }) => {
   const { todos, deleteTodo, completeTodo } = useTodo();
+  const [daysLeft, setDaysLeft] = useState<string | null>(null);
   const todo = todos.find(t => t.id === id);
+  
+  useEffect(() => {
+    if (!todo?.dueDate) return;
+    
+    const today = new Date();
+    const deadlineDate = new Date(todo.dueDate);
+    const timeDiff = deadlineDate.getTime() - today.getTime();
+    const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+    if (daysLeft < 0) {
+      setDaysLeft(" + " + daysLeft * -1);
+    } else {
+      setDaysLeft(" - " + daysLeft);
+    }
+  }, [todo?.dueDate]);
+
   if (!todo) return null;
 
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -21,23 +38,6 @@ const CardComponent: React.FC<CardProps> = ({ id }) => {
     e.stopPropagation();
     completeTodo(id);
   };
-
-  const [daysLeft, setDaysLeft] = useState<string | null>(null);
-  
-  useEffect(() => {
-    if (todo.dueDate) {
-      const today = new Date();
-      const deadlineDate = new Date(todo.dueDate);
-      const timeDiff = deadlineDate.getTime() - today.getTime();
-      const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-
-      if (daysLeft < 0) {
-        setDaysLeft(" + " + daysLeft * -1);
-      } else {
-        setDaysLeft(" - " + daysLeft);
-      }
-    }
-  }, [todo.dueDate]);
 
   return (
     <Card
