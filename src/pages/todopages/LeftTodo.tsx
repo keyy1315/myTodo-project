@@ -1,5 +1,5 @@
 import TodoListPage from "../TodoListPage";
-import { Todo } from "../../context/TodoContext";
+import { Todo } from "../../types/todo";
 
 const LeftTodo = () => {
   return (

@@ -1,5 +1,6 @@
-import { useTodo, Todo } from "../context/TodoContext";
-import PopoverComponent from "../component/Popover";
+import { useTodo } from "../hooks/useTodo";
+import { Todo } from "../types/todo";
+import PopoverComponent from "../components/component/Popover";
 
 interface TodoListPageProps {
   filterFn: (todo: Todo) => boolean;

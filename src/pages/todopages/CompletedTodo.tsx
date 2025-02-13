@@ -1,4 +1,4 @@
-import { Todo } from "../../context/TodoContext";
+import { Todo } from "../../types/todo";
 import TodoListPage from "../TodoListPage";
 
 const CompletedTodo = () => {
