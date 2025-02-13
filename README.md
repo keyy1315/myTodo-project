@@ -22,3 +22,43 @@
 - typescript : 5.7.2
 - tailwindcss : 4.0.5
 - shadcn/ui : 2.3.0
+
+### 프로젝트 구조
+
+src/
+├── components/
+│   ├── ui/               # shadcn UI 컴포넌트
+│   └── component/        # 커스텀 컴포넌트
+│       ├── AddDialog.tsx
+│       ├── Card.tsx
+│       ├── Footer.tsx
+│       ├── Header.tsx
+│       ├── Popover.tsx
+│       └── Tabs.tsx
+│
+├── hooks/                # 커스텀 훅
+│   └── useTodo.ts
+│
+├── store/               # 상태 관리
+│   └── todoState.ts
+│
+├── types/               # 타입 정의
+│   └── todo.ts
+│
+├── pages/               # 페이지 컴포넌트
+│   ├── Home.tsx
+│   ├── TodoListPage.tsx
+│   └── todopages/
+│       ├── AllTodo.tsx
+│       ├── CompletedTodo.tsx
+│       ├── ExpiredTodo.tsx
+│       ├── LeftTodo.tsx
+│       └── TodayTodo.tsx
+│
+├── data/                # 더미 데이터
+│   └── dummyTodo.ts
+│
+├── App.tsx              # 루트 컴포넌트
+├── main.tsx            # 엔트리 포인트
+├── App.css
+└── index.css
